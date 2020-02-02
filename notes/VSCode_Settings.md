@@ -2,12 +2,13 @@
 tags: [Code]
 title: VSCode_Settings
 created: '2020-01-30T20:16:16.175Z'
-modified: '2020-01-30T21:03:29.075Z'
+modified: '2020-02-02T18:34:30.862Z'
 ---
 
 # VSCode Settings
 Created Friday 17 May 2019
 
+```
 {
 //Terminal
 "terminal.integrated.fontFamily": "Menlo for Powerline",
@@ -30,4 +31,4 @@ Created Friday 17 May 2019
 "workbench.colorTheme": "Fresh Material",
 "workbench.statusBar.feedback.visible": false
 }
-
+```
