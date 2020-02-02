@@ -2,15 +2,15 @@
 tags: [Linux]
 title: Linux_SSD_Trim
 created: '2020-01-30T20:16:15.779Z'
-modified: '2020-01-30T20:43:47.784Z'
+modified: '2020-02-02T17:46:20.945Z'
 ---
 
 # Linux SSD Trim
 Created Monday 20 August 2018
 
-fstrim -v /
+`fstrim -v /`
 
-
+```
 Usage:
  fstrim [options] <mount point>
 
@@ -27,4 +27,4 @@ Options:
  -V, --version  output version information and exit
 
 For more details see fstrim(8).
-
+```

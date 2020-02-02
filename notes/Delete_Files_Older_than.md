@@ -2,13 +2,13 @@
 tags: [Linux]
 title: Delete_Files_Older_than
 created: '2020-01-30T20:16:15.483Z'
-modified: '2020-01-30T20:39:18.759Z'
+modified: '2020-02-02T17:49:53.251Z'
 ---
 
 # Delete Files Older than
 Created Thursday 05 April 2018
 
-find /path/to/files* -mtime +5 -exec rm {} \;
+`find /path/to/files* -mtime +5 -exec rm {} \;`
 
 Note that there are spaces between rm, {}, and \;
 

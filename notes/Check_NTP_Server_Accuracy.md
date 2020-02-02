@@ -2,17 +2,18 @@
 tags: [Windows]
 title: Check_NTP_Server_Accuracy
 created: '2020-01-30T20:16:16.515Z'
-modified: '2020-01-30T20:37:12.292Z'
+modified: '2020-02-02T17:56:25.039Z'
 ---
 
 # Check NTP Server Accuracy
 Created Monday 03 April 2017
 
-w32tm /stripchart /computer:time.windows.com
+`w32tm /stripchart /computer:time.windows.com`
 
 
-Example from when Microsoft was having Time server issues. 
+## Example from when Microsoft was having Time server issues. 
 
+```
 Microsoft Windows [Version 6.1.7601]
 Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
 
@@ -64,4 +65,4 @@ The current time is 4/3/2017 9:57:32 AM.
 09:57:49 d:+00.0467544s o:+00.0447976s  [                           *                           ]
 ^C
 U:\>
-
+```

@@ -2,28 +2,29 @@
 tags: [Linux]
 title: DNS_Cheet_Sheet
 created: '2020-01-30T20:16:15.499Z'
-modified: '2020-01-30T20:39:48.200Z'
+modified: '2020-02-02T17:51:03.868Z'
 ---
 
 # DNS Cheet Sheet
 Created Thursday 11 May 2017
 
-To grab DNS info for google.com
-dig google.com
+### To grab DNS info for google.com
+`dig google.com`
 
-To grab DNS info and poll a specific DNS server
-dig @8.8.8.8 www.google.com
+### To grab DNS info and poll a specific DNS server
+`dig @8.8.8.8 www.google.com`
 
-To get a short DNS anwer. 
-dig +short google.com
+### To get a short DNS anwer. 
+`dig +short google.com`
 
-Grab a specific record type
-dig -t aaaa google.com
+### Grab a specific record type
+`dig -t aaaa google.com`
 
-Reverse Lookup an IP
-dig -x ip-address-here
+### Reverse Lookup an IP
+`dig -x ip-address-here`
 
-Other values for -t include MX, CNAME, PTR + others.  
+
+## Other values for -t include MX, CNAME, PTR + others.  
 
 Address Mapping records (A) ...
 IP Version 6 Address records (AAAA) ...
@@ -35,7 +36,7 @@ Name Server records (NS) ...
 Reverse-lookup Pointer records (PTR)
 
 
-DNS Resource Records
+## DNS Resource Records
 
 Zone DNS database is a collection of resource records and each of the records provides information about a specific object. A list of most common records is provided below:
 
