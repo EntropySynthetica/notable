@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: Install Generic K8S
 created: '2020-01-30T18:30:53.060Z'
-modified: '2020-02-02T18:14:42.145Z'
+modified: '2020-02-04T02:26:13.520Z'
 ---
 
 # Install Generic K8S
@@ -106,9 +106,61 @@ kubenode02   Ready      <none>   31s     v1.12.2
 The basic cluster is now setup. 
 
 
-## Add Ingress Controller
+
+
+
+## Add Nginx ingress controller via manifests. 
+
+### Clone the Nginx repo
+```
+git clone https://github.com/nginxinc/kubernetes-ingress/
+git checkout v1.6.1
+cd kubernetes-ingress/deployments
+```
+
+### Configure Roll Based Access Control
+
+Create a namespace and a service account for the Ingress controller
+`kubectl apply -f common/ns-and-sa.yaml`
+
+Create a cluster role and cluster role binding for the service account
+`kubectl apply -f rbac/rbac.yaml`
+
+### Create the Default Secret, Customization ConfigMap, and Custom Resource Definitions
+
+Create a secret with a TLS certificate and a key for the default server in NGINX
+`kubectl apply -f common/default-server-secret.yaml`
+
+Create a config map for customizing NGINX configuration
+`kubectl apply -f common/nginx-config.yaml`
+
+Create custom resource definitions for VirtualServer and VirtualServerRoute resources
+`kubectl apply -f common/custom-resource-definitions.yaml`
+
+### Deploy the Ingress Controller
+`kubectl apply -f deployment/nginx-ingress.yaml`
+
+### Check that the Ingress Controller is Running
+`kubectl get pods --namespace=nginx-ingress`
+
+### Get Access to the Ingress Controller
+Setup a nodeport and Nginx http / https will start listening on a random port in the 30000 to 32000 range
+`kubectl create -f service/nodeport.yaml`
+ 
+ OR
+
+Expose port 80 and 443 directly to each Ngingx Container on each Node
+
+Modify deployment/nginx-ingress.yaml to have the following lines. 
+```
+spec: 
+  template:
+	spec:
+	  hostNetwork: true
+```
+
+## Add Ingress Controller Automatically (untested)
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.26.2/deploy/static/mandatory.yaml`
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml`
-
