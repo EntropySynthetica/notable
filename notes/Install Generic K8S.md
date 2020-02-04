@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: Install Generic K8S
 created: '2020-01-30T18:30:53.060Z'
-modified: '2020-02-04T02:26:13.520Z'
+modified: '2020-02-04T02:33:56.804Z'
 ---
 
 # Install Generic K8S
@@ -158,6 +158,14 @@ spec:
 	spec:
 	  hostNetwork: true
 ```
+
+### Remove Nginx Controller
+Delete the nginx-ingress namespace to uninstall the Ingress controller along with all the auxiliary resources that were created
+`kubectl delete namespace nginx-ingress`
+
+Delete the ClusterRole and ClusterRoleBinding created in that step
+`kubectl delete clusterrole nginx-ingress`
+`kubectl delete clusterrolebinding nginx-ingress`
 
 ## Add Ingress Controller Automatically (untested)
 
