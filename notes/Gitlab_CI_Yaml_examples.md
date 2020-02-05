@@ -2,16 +2,15 @@
 tags: [Git]
 title: Gitlab_CI_Yaml_examples
 created: '2020-01-30T20:16:15.563Z'
-modified: '2020-01-30T20:41:46.060Z'
+modified: '2020-02-05T16:23:31.206Z'
 ---
 
 # Gitlab CI Yaml examples
 Created Monday 27 January 2020
 
-##########################
-##########################
 
 
+```
 image: docker:git
 services:
   - docker:dind
@@ -46,12 +45,11 @@ stable:
 - docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_REF_SLUG}"
   only:
 - tags
+```
 
+---
 
-##########################
-##########################
-
-
+```
 stages:
   - Test
   - Build
@@ -112,9 +110,12 @@ entrypoint: ["/bin/sh", "-c"]
 - kubectl apply -f ingress.yaml
 - kubectl patch -f deployment.yaml -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"ci-last-updated\":\"$(date +'%s')\"}}}}}"
 
-##########################
-##########################
+```
 
+---
+
+
+```
 image:
   name: golang:1.12.5-stretch
   entrypoint: ["/bin/sh", "-c"]
@@ -251,4 +252,4 @@ url: <https://live-presentation-gitlab-k8s.edenmal.net>
 - kubectl apply -f ingress.yaml
 - kubectl rollout status -f deployment.yaml
 - kubectl get deploy,svc,ing,pod -l app="$(echo ${CI_PROJECT_NAME} | tr "." "-")",ref="${CI_ENVIRONMENT_SLUG}"
-
+```
