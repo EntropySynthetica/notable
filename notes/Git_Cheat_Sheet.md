@@ -2,11 +2,14 @@
 tags: [Git]
 title: Git_Cheat_Sheet
 created: '2020-01-30T20:16:15.547Z'
-modified: '2020-02-05T16:21:50.058Z'
+modified: '2020-02-05T16:29:25.392Z'
 ---
 
 # Git Cheat Sheet
 Created Friday 17 February 2017
+
+
+## Common Examples
 
 Download a remote git repo to local dir.
 `git clone <github https>`
@@ -39,8 +42,9 @@ Track renamed file
 `git mv file_from file_to`					
 
 
+## Creating and workign with a git repo
 
-## New Project Git Project from Repo
+### New Project Git Project from Repo
 
 1. Create a new Repo on Github.  Find the repository URL on the overview page.
 2. Go to the directory you want the repo to live.  
@@ -53,20 +57,20 @@ Track renamed file
 9. Push changes to github with `git push origin master`
 
 
-## Pull Changes to local
+### Pull Changes to local
 
 1. Go into the directory of the project
 2. run `git pull --all`
 
 
-## Push changes
+### Push changes
 
 1. Verify there are changes with `git status`
 2. Commit changes with `git commit -m 'Comments go here'`
 3. Sync back to github with `git push origin master`
 
 
-## New Project from existing directory
+### New Project from existing directory
 
 1. Go into the directory
 2. Run `git init`
@@ -78,7 +82,7 @@ Track renamed file
 8. Sync back to github with `git push origin master`
 
 
-## Branch a repo
+### Branch a repo
 
 1. `git branch <branch name>`
 2. `git checkout <branch name>`
@@ -87,7 +91,7 @@ Track renamed file
 5. `git commit <filename> -m 'Notes'`
 
 
-## Merge back to Master
+### Merge back to Master
 
 1. Verify your changes `git status`
 2. Switch to Master `git checkout master`
@@ -97,7 +101,7 @@ Track renamed file
 6. Sync back to github `git push origin master`
 
 
-## Overwrite local changes with what is on the remote. 
+### Overwrite local changes with what is on the remote. 
 
 1. `git fetch --all`
 2. `git reset --hard origin/master`
@@ -106,28 +110,32 @@ Or if you are on some other branch
 
 `git reset --hard origin/<branch_name>`
 
-## Testing gitlab ssh
+### Testing gitlab ssh
 `ssh -T [git@gitlab.com](mailto:git@gitlab.com)`
 
-## Change git remote to SSH
+### Change git remote to SSH
 1. `git remote -v`
 2. `git remote set-url origin <repo uri>`
 
 
 ---
 
-### To set your identity:
-`git config --global user.name "John Doe"`
-`git config --global user.email [johndoe@example.com](mailto:johndoe@example.com)`
+
+## To set your identity:
+`git config --global user.name "Jane Doe"`
+`git config --global user.email myworkemail@address.com`
 
 ### To only set the idendity for one repo: 
-`git config user.email [myworkemail@address.com](mailto:myworkemail@address.com)`
+`git config user.email myworkemail@address.com`
 
 ### To set your editor:
 `git config --global core.editor vim`
 
 ### To enable color:
 `git config --global color.ui true`
+
+
+## Git Stash Notes
 
 ### To stage all changes for commit:
 `git add --all`
