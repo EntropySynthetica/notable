@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-02-02T18:19:54.563Z'
+modified: '2020-02-06T02:08:38.911Z'
 ---
 
 # kubectl Notes
@@ -148,4 +148,8 @@ check pod cpu utilization
 ### Get events for a pod (useful for troubleshooting)
 `kubectl describe pod <pod name>`
 
+## Install SSL Cert as Secret
+`kubectl create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE}`
+
+The cert can then be referneced by the ingress controller to enable HTTPS. 
 
