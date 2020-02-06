@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-02-06T02:08:38.911Z'
+modified: '2020-02-06T22:17:20.212Z'
 ---
 
 # kubectl Notes
@@ -61,7 +61,7 @@ Repo at: https://github.com/ahmetb/kubectx
 
 ```
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubecontext
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 ```
 
