@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-02-06T22:17:20.212Z'
+modified: '2020-02-07T03:08:29.542Z'
 ---
 
 # kubectl Notes
@@ -52,6 +52,13 @@ Bash script to automatically add any .yaml files in the .kube directory into the
 ```
 #!/bin/bash
 export KUBECONFIG=$(echo $(find ~/.kube -type f -name config.\*.yaml) | sed 's/:space:/:/g')
+```
+
+```
+for f in `ls ~/.kube/ | grep config.\*.yaml`
+do 
+    export KUBECONFIG="$HOME/.kube/$f:$KUBECONFIG"; 
+done
 ```
 
 ## Install kubectx and kubens
