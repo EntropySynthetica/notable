@@ -2,7 +2,7 @@
 tags: [Git]
 title: Git_Cheat_Sheet
 created: '2020-01-30T20:16:15.547Z'
-modified: '2020-02-05T16:29:25.392Z'
+modified: '2020-02-07T22:25:47.119Z'
 ---
 
 # Git Cheat Sheet
@@ -117,6 +117,14 @@ Or if you are on some other branch
 1. `git remote -v`
 2. `git remote set-url origin <repo uri>`
 
+### Setting multiple remotes
+`git remote add <short name for repo> <repo uri>`
+ 
+ Verify with 
+ `git remote -v`
+
+ Then use the short name in pushes or pulls
+ `git push <short name for repo> master`
 
 ---
 
