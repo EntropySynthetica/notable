@@ -1,8 +1,8 @@
 ---
-tags: [Linux]
+tags: [Crypto, Linux]
 title: Setup_Apache2_with_GoDaddy_Cert
 created: '2020-01-30T20:16:15.911Z'
-modified: '2020-01-30T20:53:26.626Z'
+modified: '2020-02-12T21:40:35.031Z'
 ---
 
 # Setup Apache2 with GoDaddy Cert
@@ -24,20 +24,22 @@ CA = gd_bundle-g2-g1.crt
 
 Create a PEM file from these 2,
 
-cat mycert.crt gd_bundle-g2-g1.crt > mycert.pem
+`cat mycert.crt gd_bundle-g2-g1.crt > mycert.pem`
 
 In the Conf file for the site make sure to add the following lines, 
 
+```
 SSLCertificateFile /etc/apache2/ssl/mycert.pem
-SSLCertificateKeyFile [/etc/apache2/ssl/priv.key](file:///etc/apache2/ssl/priv.key)
+SSLCertificateKeyFile /etc/apache2/ssl/priv.key
+```
 
 reload apache with
 
-sudo service apache2 reload
+`sudo service apache2 reload`
 
 Site can be verified with
 
-openssl s_client -showcerts -connect [www.mysite.com:443](./www.mysite.com/443.markdown)
+`openssl s_client -showcerts -connect www.mysite.com:443`
 
-openssl verify -CAfile chain.pem mycert.pem
+`openssl verify -CAfile chain.pem mycert.pem`
 
