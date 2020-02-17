@@ -2,7 +2,7 @@
 tags: [VMWare]
 title: VMWare_PowerCLI_in_Powershell
 created: '2020-01-30T20:16:16.547Z'
-modified: '2020-02-02T18:04:52.139Z'
+modified: '2020-02-17T21:05:18.011Z'
 ---
 
 # VMWare PowerCLI in Powershell
@@ -76,8 +76,7 @@ Notes: <https://www.petri.com/use-powercli-create-snapshot>
 `get-cluster -Location Perham |get-vm | ?{ (get-tagassignment $_) -eq $null}`
 
 ## Show VMs in Perham Cluster without the tag category "Class"
-`get-cluster -Location Perham |Get-VM | ?{(Get-TagAssignment -Entity $_ -Category Class) -eq $null}
-Get-VM | Where{Get-TagAssignment -Entity $_ -Category Class} | Select Name,@{N="Tag";E={(Get-TagAssignment $_.name).tag}}`
+`get-cluster -Location Perham |Get-VM | ?{(Get-TagAssignment -Entity $_ -Category Class) -eq $null} | Where{Get-TagAssignment -Entity $_ -Category Class} | Select Name,@{N="Tag";E={(Get-TagAssignment $_.name).tag}}`
 
 
 ## Get IP of all VMs
