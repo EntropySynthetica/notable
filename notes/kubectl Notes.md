@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-02-07T03:08:29.542Z'
+modified: '2020-02-18T00:29:06.350Z'
 ---
 
 # kubectl Notes
@@ -78,10 +78,12 @@ Optional Install the package fzf to get the program to be interactive
 Add Alias for kubectl
 `alias kc=kubectl`
 
+## kubectl command examples
+
 Check cluster info
 `kubectl cluster-info`
 
-hecking and changing kubectl contexts
+checking and changing kubectl contexts
 `kubectl tracks multiple clusters with a context name.  The name of these can be found and set in the config.sitename.yaml files.  `
 
 show all contexts
