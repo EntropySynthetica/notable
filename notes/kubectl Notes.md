@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-02-18T00:29:06.350Z'
+modified: '2020-02-24T18:26:39.002Z'
 ---
 
 # kubectl Notes
@@ -161,4 +161,17 @@ check pod cpu utilization
 `kubectl create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE}`
 
 The cert can then be referneced by the ingress controller to enable HTTPS. 
+
+## Cluster Maint
+
+### Drain nodes from cluster to preform maintenance.
+
+Get Node Names
+`kubectl get nodes`
+
+Drain the node
+`kubectl drain <node name>`
+
+When maint is complete re-enable the node
+`kubectl uncordon <node name>`
 
