@@ -1,8 +1,9 @@
 ---
+deleted: true
 tags: [Linux]
 title: MYSQL_Notes
 created: '2020-01-30T20:16:15.827Z'
-modified: '2020-01-30T20:45:04.667Z'
+modified: '2020-02-27T21:56:13.435Z'
 ---
 
 # MYSQL Notes

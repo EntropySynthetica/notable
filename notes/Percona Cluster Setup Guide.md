@@ -1,8 +1,8 @@
 ---
-tags: [Linux]
+tags: [Database, Linux, MySQL]
 title: Percona_Cluster_Setup_Guide
 created: '2020-01-30T20:16:15.851Z'
-modified: '2020-02-02T17:38:45.749Z'
+modified: '2020-02-27T21:57:02.281Z'
 ---
 
 # Percona Cluster Setup Guide

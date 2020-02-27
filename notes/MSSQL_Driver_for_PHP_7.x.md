@@ -1,8 +1,8 @@
 ---
-tags: [Linux]
+tags: [Database, Linux, MySQL]
 title: MSSQL_Driver_for_PHP_7.x
 created: '2020-01-30T20:16:15.803Z'
-modified: '2020-02-02T17:45:31.220Z'
+modified: '2020-02-27T21:57:21.262Z'
 ---
 
 # MSSQL Driver for PHP 7.x

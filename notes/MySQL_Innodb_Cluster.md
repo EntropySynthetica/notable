@@ -1,8 +1,8 @@
 ---
-tags: [Linux]
+tags: [Database, Linux, MySQL]
 title: MySQL_Innodb_Cluster
 created: '2020-01-30T20:16:15.815Z'
-modified: '2020-01-30T20:44:26.298Z'
+modified: '2020-02-27T21:57:08.716Z'
 ---
 
 # MySQL Innodb Cluster
