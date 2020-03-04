@@ -2,7 +2,7 @@
 tags: [Docker]
 title: Docker_Cheat_Sheet
 created: '2020-01-30T20:16:15.511Z'
-modified: '2020-02-02T18:33:59.127Z'
+modified: '2020-03-04T20:26:55.568Z'
 ---
 
 # Docker Cheat Sheet
@@ -195,5 +195,25 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 ```
 
+## Working with remote registries
 
+### Log into a remote registry
+`docker login <registryuri>:<registry port>`
 
+Example:
+`docker login gitlab.example.com:5050`
+
+### Build a container for the remote repo. 
+`docker build -t gitlab.example.com:5050/<gitlab username>/<repo name>:<container tag> .`
+
+Example:
+`docker build -t gitlab.example.com:5050/erica.zavaleta/mycontainer:master .`
+
+### Push a container to the remote repo.
+`docker push gitlab.example.com:5050/<gitlab username>/<repo name>:<container tag>`
+
+Example:
+`docker push gitlab.example.com:5050/erica.zavaleta/mycontainer:master`
+
+### Log out of remote registry
+`docker logout <registryuri>:<registry port>`
