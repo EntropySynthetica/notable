@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-02-24T18:26:39.002Z'
+modified: '2020-03-25T13:45:01.554Z'
 ---
 
 # kubectl Notes
@@ -175,3 +175,5 @@ Drain the node
 When maint is complete re-enable the node
 `kubectl uncordon <node name>`
 
+Show my Current Privs in Kubectl
+`kubectl auth can-i --list --namespace=kube-system`
