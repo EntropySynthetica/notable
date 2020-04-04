@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: Rancher_Setup
 created: '2020-01-30T20:16:15.731Z'
-modified: '2020-02-02T18:21:51.473Z'
+modified: '2020-04-03T20:24:54.077Z'
 ---
 
 # Rancher Setup
@@ -27,7 +27,7 @@ sudo service systemd-resolved stop
 rancher/hello-world
 
 ## Startup rancher with self signed certs
-`sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 -v /opt/rancher:/var/lib/rancher rancher/rancher:v2.3.5`
+`sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 -v /opt/rancher:/var/lib/rancher rancher/rancher:v2.4.2`
 
 ## Startup Rancher with proper certs
 ```
