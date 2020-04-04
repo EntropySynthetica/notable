@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: Install Generic K8S
 created: '2020-01-30T18:30:53.060Z'
-modified: '2020-02-04T02:33:56.804Z'
+modified: '2020-04-03T22:36:38.041Z'
 ---
 
 # Install Generic K8S
@@ -114,8 +114,8 @@ The basic cluster is now setup.
 ### Clone the Nginx repo
 ```
 git clone https://github.com/nginxinc/kubernetes-ingress/
-git checkout v1.6.1
 cd kubernetes-ingress/deployments
+git checkout v1.6.3
 ```
 
 ### Configure Roll Based Access Control
