@@ -2,7 +2,7 @@
 tags: [Git]
 title: Git_Cheat_Sheet
 created: '2020-01-30T20:16:15.547Z'
-modified: '2020-02-07T22:25:47.119Z'
+modified: '2020-04-21T21:46:54.733Z'
 ---
 
 # Git Cheat Sheet
@@ -125,6 +125,14 @@ Or if you are on some other branch
 
  Then use the short name in pushes or pulls
  `git push <short name for repo> master`
+
+### Ignore changes to already-tracked files
+
+`git update-index --assume-unchanged <file>`
+
+And if you want to start tracking changes again, you can undo the previous command using:
+
+`git update-index --no-assume-unchanged <file>`
 
 ---
 
