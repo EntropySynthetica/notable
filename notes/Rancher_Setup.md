@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: Rancher_Setup
 created: '2020-01-30T20:16:15.731Z'
-modified: '2020-04-03T20:24:54.077Z'
+modified: '2020-04-21T16:19:30.279Z'
 ---
 
 # Rancher Setup
@@ -37,7 +37,7 @@ docker run -d --restart=unless-stopped \
   -v /opt/certs/cert.pem:/etc/rancher/ssl/cert.pem \
   -v /opt/certs/key.pem:/etc/rancher/ssl/key.pem \
   -v /opt/certs/cacert.pem:/etc/rancher/ssl/cacerts.pem \
-  rancher/rancher:v2.3.5
+  rancher/rancher:v2.4.2
 ```
 
 ## Get the go daddy intermediate cert
