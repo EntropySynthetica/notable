@@ -2,7 +2,7 @@
 tags: [Docker]
 title: Docker_Cheat_Sheet
 created: '2020-01-30T20:16:15.511Z'
-modified: '2020-03-04T20:26:55.568Z'
+modified: '2020-04-21T17:14:36.250Z'
 ---
 
 # Docker Cheat Sheet
@@ -147,6 +147,9 @@ While you can use the docker rmi command to remove specific images, there's a to
 
 ### Delete a docker container
 `docker rm <container ID or Name>`
+
+### Delete all containers
+`docker rm -f $(docker ps -a -q)`
 
 ### Delete a docker image
 `docker rmi <image ID or Name>`
