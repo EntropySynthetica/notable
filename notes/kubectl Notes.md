@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-03-25T13:45:01.554Z'
+modified: '2020-04-22T21:16:15.641Z'
 ---
 
 # kubectl Notes
@@ -177,3 +177,6 @@ When maint is complete re-enable the node
 
 Show my Current Privs in Kubectl
 `kubectl auth can-i --list --namespace=kube-system`
+
+Create a manifest file with your ssl cert from pem format
+`kubectl -n ingress-nginx create secret tls ingress-default-cert --cert=cert.pem --key=key.pem -o yaml --dry-run=true > ingress-default-cert.yaml`
