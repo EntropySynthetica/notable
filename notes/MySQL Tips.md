@@ -2,10 +2,12 @@
 tags: [MySQL]
 title: MySQL Tips
 created: '2020-04-28T01:13:18.118Z'
-modified: '2020-04-28T03:21:51.204Z'
+modified: '2020-04-29T01:15:50.069Z'
 ---
 
 # MySQL Tips
+
+Notes from: https://www.youtube.com/watch?v=665oN7vRQU4
 
 ## tips:
     use indexes:
@@ -32,17 +34,22 @@ modified: '2020-04-28T03:21:51.204Z'
 
 
 ---
+## Use Indexes
 indexes:
 alter table table_name add index index_name (column);
 
 
+## Normalize Data
 instead of:
+```
 posts table
     - post_id
     - title
     - author_name
+```
 
 do:
+```
 posts table
     - post_id
     - title
@@ -50,36 +57,44 @@ posts table
 authors table
     - author_id
     - name
+```
 
-
+## Enable Logs
 to log queries, update my.cnf and add/change
 ```
 general_log_file = /var/log/mysql.log
 general_log = 1
 ```
 
+## use consistent naming
 bad naming:
+```
 posts table
     - ID
     - title
     - contentBody
     - created_at
+```
 
 also bad:
+```
 posts table
     - post_id
     - post_title
     - post_content_body
     - post_created_at
+```
 
 good naming:
+```
 posts table
     - post_id
     - title
     - content
     - created_at
+```
 
-
+### Transactions
 five reindexes
 ```
 insert into whatever values (default, 1);
