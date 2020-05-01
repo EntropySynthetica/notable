@@ -2,7 +2,7 @@
 tags: [Database, Linux, MySQL]
 title: Percona_Cluster_Setup_Guide
 created: '2020-01-30T20:16:15.851Z'
-modified: '2020-02-27T21:57:02.281Z'
+modified: '2020-05-01T21:44:02.934Z'
 ---
 
 # Percona Cluster Setup Guide
@@ -81,8 +81,8 @@ restart the system and verify /data mounts with
 
 ```
 sudo apt remove apparmor
-wget <https://repo.percona.com/apt/percona-release_0.1-6.$(lsb_release> -sc)_all.deb
-sudo dpkg -i percona-release_0.1-6.$(lsb_release -sc)_all.deb
+wget https://repo.percona.com/apt/percona-release_latest.$(lsb_release -sc)_all.deb
+sudo dpkg -i percona-release_latest.$(lsb_release -sc)_all.deb
 sudo apt update
 sudo apt install percona-xtradb-cluster-full-57
 ```
@@ -233,9 +233,9 @@ wsrep_sst_auth=sstuser:<sst_password>
 
 ## Initialize the server:
 
-`sudo /etc/init.d/mysql bootstrap-pxc`
+`sudo /etc/init.d/mysql start`
 or
-`sudo service mysql bootstrap-pxc`
+`sudo service mysql start`
 
 
 ## Check the cluster status:
@@ -304,9 +304,9 @@ wsrep_sst_auth=sstuser:<sst_password>
 
 ## Initialize the server:
 
-`sudo /etc/init.d/mysql bootstrap-pxc`
+`sudo /etc/init.d/mysql start`
 or
-`sudo service mysql bootstrap-pxc`
+`sudo service mysql start`
 
 
 
@@ -346,8 +346,8 @@ FLUSH PRIVILEGES;
 
 ```
 sudo apt remove apparmor
-wget <https://repo.percona.com/apt/percona-release_0.1-6.$(lsb_release> -sc)_all.deb
-sudo dpkg -i percona-release_0.1-6.$(lsb_release -sc)_all.deb
+wget https://repo.percona.com/apt/percona-release_latest.$(lsb_release -sc)_all.deb
+sudo dpkg -i percona-release_latest.$(lsb_release -sc)_all.deb
 sudo apt update
 sudo apt-get install proxysql percona-xtradb-cluster-client-5.7
 ```
