@@ -2,7 +2,7 @@
 tags: [Database, Linux, MySQL]
 title: Percona_Cluster_Setup_Guide
 created: '2020-01-30T20:16:15.851Z'
-modified: '2020-05-01T21:44:02.934Z'
+modified: '2020-05-06T02:43:20.195Z'
 ---
 
 # Percona Cluster Setup Guide
@@ -46,12 +46,11 @@ ALL: 172.28.
 
 # Setup Data Partition
 
-Setup Data Drive, do this on all db servers:
-In vmware resize main disk to 250gb
+Setup second drive with desired size of /data partition.
 
 Set the new partition
 
-`sudo fdisk /dev/sda`
+`sudo fdisk /dev/sdb`
 press n for new partition
 press p for primary volume
 Accept the defaults for sizes
@@ -59,16 +58,16 @@ press w to write, there may be an error about re-reading failing.  It can be ign
 Restart the system
 
 ```
-sudo mkfs -t ext4 /dev/sda4
+sudo mkfs -t ext4 /dev/sdb1
 sudo mkdir /data
-sudo mount -t ext4 /dev/sda4 /data/
+sudo mount -t ext4 /dev/sdb1 /data/
 ```
 
 Verify it mounts with:
 `df -h`
 
 add the following line to /etc/fstab
-`/dev/sda4       /data           ext4    errors=remount-ro       0       1`
+`/dev/sdb1       /data           ext4    errors=remount-ro       0       1`
 
 restart the system and verify /data mounts with
 `df -h`
