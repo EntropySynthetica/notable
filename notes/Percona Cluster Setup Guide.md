@@ -2,7 +2,7 @@
 tags: [Database, Linux, MySQL]
 title: Percona_Cluster_Setup_Guide
 created: '2020-01-30T20:16:15.851Z'
-modified: '2020-05-06T02:43:20.195Z'
+modified: '2020-05-06T16:33:45.734Z'
 ---
 
 # Percona Cluster Setup Guide
@@ -115,7 +115,7 @@ wsrep_provider=/usr/lib/galera3/libgalera_smm.so
 # Cluster connection URL contains IPs of nodes
 #If no IP is found, this implies that a new cluster needs to be created,
 #in order to do that you need to bootstrap this node
-wsrep_cluster_address=<gcomm://172.28.0.10,172.28.0.20,172.28.0.30>
+wsrep_cluster_address=gcomm://172.28.0.10,172.28.0.20,172.28.0.30
 
 # In order for Galera to work correctly binlog format should be ROW
 binlog_format=ROW
@@ -195,7 +195,7 @@ wsrep_provider=/usr/lib/galera3/libgalera_smm.so
 # Cluster connection URL contains IPs of nodes
 #If no IP is found, this implies that a new cluster needs to be created,
 #in order to do that you need to bootstrap this node
-wsrep_cluster_address=<gcomm://172.28.0.10,172.28.0.20,172.28.0.30>
+wsrep_cluster_address=gcomm://172.28.0.10,172.28.0.20,172.28.0.30
 
 # In order for Galera to work correctly binlog format should be ROW
 binlog_format=ROW
@@ -266,7 +266,7 @@ wsrep_provider=/usr/lib/galera3/libgalera_smm.so
 # Cluster connection URL contains IPs of nodes
 #If no IP is found, this implies that a new cluster needs to be created,
 #in order to do that you need to bootstrap this node
-wsrep_cluster_address=<gcomm://172.28.0.10,172.28.0.20,172.28.0.30>
+wsrep_cluster_address=gcomm://172.28.0.10,172.28.0.20,172.28.0.30
 
 # In order for Galera to work correctly binlog format should be ROW
 binlog_format=ROW
