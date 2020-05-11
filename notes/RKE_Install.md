@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: RKE_Install
 created: '2020-01-30T20:16:15.739Z'
-modified: '2020-04-04T01:15:14.266Z'
+modified: '2020-05-10T16:29:06.498Z'
 ---
 
 # RKE Install
@@ -29,7 +29,7 @@ sudo usermod -aG docker your-user
 
 Get RKE binary installed on a server that is not one of the nodes. 
 ```
-curl -LO https://github.com/rancher/rke/releases/download/v1.1.0/rke_linux-amd64
+curl -LO https://github.com/rancher/rke/releases/download/v1.1.1/rke_linux-amd64
 chmod +x rke_linux-amd64
 sudo cp rke_linux-amd64 /usr/local/bin/rke
 rke --version
@@ -220,7 +220,7 @@ authorization:
   options: {}
 ignore_docker_version: false
 
-kubernetes_version: "v1.17.4-rancher1-3"
+kubernetes_version: "v1.17.5-rancher1-1"
 
 private_registries: []
 
