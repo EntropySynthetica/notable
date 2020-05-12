@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: RKE_Install
 created: '2020-01-30T20:16:15.739Z'
-modified: '2020-05-10T16:29:06.498Z'
+modified: '2020-05-12T23:15:21.181Z'
 ---
 
 # RKE Install
@@ -153,9 +153,9 @@ services:
     path: ""
     uid: 0
     gid: 0
-    snapshot: null
-    retention: ""
-    creation: ""
+    snapshot: true
+    retention: "24h"
+    creation: "6h0s"
     backup_config: null
   kube-api:
     image: ""
