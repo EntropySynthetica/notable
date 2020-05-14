@@ -2,7 +2,7 @@
 tags: [Linux]
 title: Set SNMPV3 on Ubuntu 16.04
 created: '2020-05-14T15:34:58.244Z'
-modified: '2020-05-14T15:37:34.272Z'
+modified: '2020-05-14T15:41:05.446Z'
 ---
 
 # Set SNMPV3 on Ubuntu 16.04
@@ -36,7 +36,7 @@ Add a new line that looks like this
 
 restart snmp with `sudo service snmpd restart`
 
-check it started ok with sudo service snmpd status
+check it started ok with `sudo service snmpd status`
 
 Do a test from another machine with, replace x.x.x.x with the IP of the machine you are testing to. 
 
