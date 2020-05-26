@@ -2,7 +2,7 @@
 tags: [Database, Linux, MySQL]
 title: MySQL Notes
 created: '2020-02-27T20:05:41.420Z'
-modified: '2020-02-27T21:49:52.623Z'
+modified: '2020-05-26T15:32:44.208Z'
 ---
 
 # MySQL Notes
@@ -35,6 +35,33 @@ Show the full users table
 
 Show basic users table
 `select user, host from mysql.user;`
+
+## Create a test table
+
+```
+create table test_table(
+   test_id INT NOT NULL AUTO_INCREMENT,
+   test_title VARCHAR(100) NOT NULL,
+   test_name VARCHAR(40) NOT NULL,
+   submission_date DATE,
+   PRIMARY KEY ( test_id )
+);
+```
+
+ Add some data to that table
+
+ ```
+ INSERT INTO test_table 
+   (test_title, test_name, submission_date)
+   VALUES
+   ("Mrs", "Jane Doe", NOW());
+ ```
+
+Read the data out
+
+```
+select * from test_table
+```
 
 ## Misc Commands
 Access monitor: `mysql -u [username] -p;` (will prompt for password)
