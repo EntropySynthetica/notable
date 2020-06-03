@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: RKE_Install
 created: '2020-01-30T20:16:15.739Z'
-modified: '2020-05-12T23:15:21.181Z'
+modified: '2020-06-03T16:45:31.706Z'
 ---
 
 # RKE Install
@@ -26,6 +26,14 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh ./get-docker.sh
 sudo usermod -aG docker your-user
 ```
+
+Install NFS on the nodes for remote persitent storage
+```
+sudo apt install nfs-common
+```
+Then check that the rpcbind service is started and enabled on boot.
+
+
 
 Get RKE binary installed on a server that is not one of the nodes. 
 ```
