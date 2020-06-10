@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: Install Helm
 created: '2020-02-18T00:39:50.164Z'
-modified: '2020-02-18T01:10:43.044Z'
+modified: '2020-06-10T20:30:05.506Z'
 ---
 
 # Install Helm
@@ -16,7 +16,7 @@ Every release of Helm provides binary releases for a variety of OSes. These bina
 
 * Download your https://github.com/helm/helm/releases
 
-* Unpack it `tar -zxvf helm-v3.0.0-linux-amd64.tar.gz`
+* Unpack it `tar -zxvf helm-v3.2.3-linux-amd64.tar.gz`
 
 * Find the helm binary in the unpacked directory, and move it to its desired destination `mv linux-amd64/helm /usr/local/bin/helm`
 
