@@ -2,7 +2,7 @@
 tags: [Code]
 title: Install Go on Ubuntu
 created: '2020-05-15T01:22:24.001Z'
-modified: '2020-05-15T01:36:29.496Z'
+modified: '2020-06-17T13:11:48.515Z'
 ---
 
 # Install Go on Ubuntu
@@ -13,11 +13,11 @@ Switch to /tmp
 `cd /tmp`
 
 Download it with
-`curl -O https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz`
+`curl -O https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz`
 
 Extract the File
 
-`tar -xvf go1.14.3.linux-amd64.tar.gz`
+`tar -xvf go1.14.4.linux-amd64.tar.gz`
 
 Adjust the permissions and move the go directory to /usr/local:
 
@@ -43,3 +43,8 @@ go version
 ```
 
 Verify go ENV with `go env`
+
+Install Wego Weather
+```
+go get -u github.com/schachmat/wego
+```
