@@ -2,7 +2,7 @@
 tags: [Git]
 title: Git_Cheat_Sheet
 created: '2020-01-30T20:16:15.547Z'
-modified: '2020-07-03T01:51:40.101Z'
+modified: '2020-07-04T03:04:08.204Z'
 ---
 
 # Git Cheat Sheet
@@ -41,12 +41,18 @@ View Commit History
 Track renamed file
 `git mv file_from file_to`					
 
-## To set your identity:
+To set your identity:
 `git config user.name "Jane Doe"`
 `git config user.email "myworkemail@address.com"`
 
-## Remove all changes since last commit. 
+Remove all changes since last commit. 
 `git reset --hard HEAD`
+
+Create a new Brnch
+`git checkout -b <branch>`
+
+Delete a Branch
+`git branch -d <branch>`
 
 
 ## Creating and workign with a git repo
