@@ -2,7 +2,7 @@
 tags: [Git]
 title: Git_Cheat_Sheet
 created: '2020-01-30T20:16:15.547Z'
-modified: '2020-07-04T03:04:08.204Z'
+modified: '2020-07-07T20:28:45.896Z'
 ---
 
 # Git Cheat Sheet
@@ -38,6 +38,12 @@ Delete a branch in remote repo.
 View Commit History
 `git log`
 
+more succinct output
+`git log --oneline`
+
+with a visual graph of branches
+`git log --graph`
+
 Track renamed file
 `git mv file_from file_to`					
 
@@ -45,15 +51,30 @@ To set your identity:
 `git config user.name "Jane Doe"`
 `git config user.email "myworkemail@address.com"`
 
-Remove all changes since last commit. 
-`git reset --hard HEAD`
-
 Create a new Brnch
 `git checkout -b <branch>`
 
 Delete a Branch
 `git branch -d <branch>`
 
+Remove all changes since last commit. 
+`git reset --hard HEAD`
+
+Add more changes to last commit
+`git commit --amend`
+
+Rewind back n commits
+`git reset --hard HEAD~n`        # n is the last n commits
+
+or to a specific commit
+`git reset --hard <commit-sha>`
+
+See the differences in your staged (or unstaged) changes
+`git diff --staged` # for staged changes
+`git diff` # for unstaged changes
+
+Advanced Git Reference
+https://dev.to/g_abud/advanced-git-reference-1o9j
 
 ## Creating and workign with a git repo
 
