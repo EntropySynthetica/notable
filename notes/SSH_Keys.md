@@ -2,7 +2,7 @@
 tags: [Crypto, Linux]
 title: SSH_Keys
 created: '2020-01-30T20:16:15.923Z'
-modified: '2020-02-12T21:27:47.189Z'
+modified: '2020-07-08T13:00:29.593Z'
 ---
 
 # SSH Keys
@@ -33,3 +33,50 @@ By defualt the linux ssh client will use `~/.ssh/id_rsa` as a private key.
 ### To manually point SSH to a private key to use  
 `ssh -i ~/.ssh/id_rsa.otherkey user@server.example.com`
 
+## Managing multiple keys and hosts with config file. 
+
+It’s good to have many keys, e.g. one for GitHub, one for BitBucket, one for your server. But, by default the id_rsa.pub file is always used, we have to tell ssh to look different public key file depending on the service. This is where the config files come in.
+
+config file lives in `~/.ssh/config`, if it’s not there, go ahead and make it.
+
+It should look like 
+```
+Host           myserver
+  HostName       192.168.1.1
+  Port           5555
+  IdentityFile   ~/.ssh/company/id_rsa
+  User           sysadmin
+
+Host           mysecondserver
+  HostName       192.168.1.3
+  IdentityFile   ~/.ssh/company2/id_rsa
+  User           sysadmin
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/_id_rsa
+  IdentitiesOnly yes
+```
+
+Then you can connect with `ssh myserver`
+
+Manging multiple Git Repos
+
+```
+Host github-corporate
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_rsa_corp
+        IdentitiesOnly yes
+```
+use `git clone git@github-corporate:company/project.git`
+
+```
+Host github-personal
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_rsa_personal
+        IdentitiesOnly yes
+```
+use `git clone git@github-personal:steve/other-pi-project.git`
