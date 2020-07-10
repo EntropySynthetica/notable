@@ -2,7 +2,7 @@
 tags: [Git]
 title: Git_Cheat_Sheet
 created: '2020-01-30T20:16:15.547Z'
-modified: '2020-07-07T20:28:45.896Z'
+modified: '2020-07-10T17:39:11.510Z'
 ---
 
 # Git Cheat Sheet
@@ -72,6 +72,9 @@ or to a specific commit
 See the differences in your staged (or unstaged) changes
 `git diff --staged` # for staged changes
 `git diff` # for unstaged changes
+
+Check that you can connect via SSH to git repo
+`ssh -vT git@github.com`
 
 Advanced Git Reference
 https://dev.to/g_abud/advanced-git-reference-1o9j
