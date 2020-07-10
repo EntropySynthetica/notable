@@ -2,7 +2,7 @@
 tags: [Database, Linux, MySQL]
 title: MySQL Notes
 created: '2020-02-27T20:05:41.420Z'
-modified: '2020-05-26T15:32:44.208Z'
+modified: '2020-07-10T15:22:21.807Z'
 ---
 
 # MySQL Notes
@@ -35,6 +35,11 @@ Show the full users table
 
 Show basic users table
 `select user, host from mysql.user;`
+
+## Change a MySQL Users Password
+`alter user '<username>'@'%' identified by '<password>';`
+`flush privileges;`
+
 
 ## Create a test table
 
