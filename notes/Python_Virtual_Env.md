@@ -2,7 +2,7 @@
 tags: [Code]
 title: Python_Virtual_Env
 created: '2020-01-30T20:16:16.143Z'
-modified: '2020-02-02T18:36:27.749Z'
+modified: '2020-07-17T21:08:30.155Z'
 ---
 
 # Python Virtual Env
@@ -16,7 +16,7 @@ Created Tuesday 18 December 2018
 
 ### To active the virtual enviroment go into the folder and run
 
-source bin/activate
+`source bin/activate`
 
 
 ### The command prompt should show the name of the virtual enviroment.  The enviroment can be verified with 
@@ -45,5 +45,12 @@ To install dependencies you've previously frozen
 
 To see what you have installed
 `pip list`
+
+### Update PIP Version
+`pip3 install --ignore-installed pip`
+
+### Show out of date packages
+`pip list --outdated`
+
 
 
