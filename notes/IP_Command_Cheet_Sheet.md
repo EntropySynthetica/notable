@@ -2,7 +2,7 @@
 tags: [Linux]
 title: IP_Command_Cheet_Sheet
 created: '2020-01-30T20:16:15.623Z'
-modified: '2020-01-30T20:42:43.822Z'
+modified: '2020-07-19T03:46:42.430Z'
 ---
 
 # IP Command Cheet Sheet
@@ -11,21 +11,21 @@ Created Thursday 11 May 2017
 Sourced From: <https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf>
 
 Show IP Address on each interface with color
-ip -br -c a # ip -brief -color address
+`ip -br -c a` # ip -brief -color address
 
 Show Mac Address of each interface with Color
-ip -br -c l # ip -brief -color link
+`ip -br -c l` # ip -brief -color link
 
 IP QUERIES
 
 SUBCOMMAND 											(DESCRIPTIONS AND TASKS)
-addr 													Display IP Addresses and property information (abbreviation of address)
+addr													Display IP Addresses and property information (abbreviation of address)
 
-ip addr												Show information for all addresses
-ip addr show dev em1									Display information only for device em1
+`ip addr`												Show information for all addresses
+`ip addr show dev em1`								Display information only for device em1
 
 link 													Manage and display the state of all network interfaces
-ip link												Show information for all interfaces
+`ip link`												Show information for all interfaces
 ip link show dev em1									Display information only for device em1
 ip -s link												Display interface statistics
 
