@@ -1,11 +1,11 @@
 ---
 tags: [Splunk]
-title: Architecture_Notes
+title: Splunk Architecture Notes
 created: '2020-01-30T20:16:16.211Z'
-modified: '2020-01-30T20:37:01.860Z'
+modified: '2020-07-19T05:14:34.098Z'
 ---
 
-# Architecture Notes
+# Splunk Architecture Notes
 Created Tuesday 06 June 2017
 
 Volume,
