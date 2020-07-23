@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-04-22T21:16:15.641Z'
+modified: '2020-07-23T21:05:39.567Z'
 ---
 
 # kubectl Notes
@@ -171,6 +171,9 @@ Get Node Names
 
 Drain the node
 `kubectl drain <node name>`
+
+Drain nodes with daeomon sets
+`kubectl drain --ignore-daemonsets <node name>`
 
 When maint is complete re-enable the node
 `kubectl uncordon <node name>`
