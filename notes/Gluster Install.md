@@ -2,7 +2,7 @@
 tags: [Linux]
 title: Gluster Install
 created: '2020-07-22T21:31:44.231Z'
-modified: '2020-07-22T21:36:32.615Z'
+modified: '2020-07-23T16:37:01.758Z'
 ---
 
 # Gluster Install
@@ -47,3 +47,15 @@ iptables -A INPUT -p tcp --dport 49152:49156 -m state --state NEW -j ACCEPT
 ### Mount on Client
 
 `sudo mount -t glusterfs labgluster01.lab:/gv0 /data`
+
+### Show mounted clients
+`gluster volume status <vol_name> clients`
+
+### Get Volume Settings
+`gluster volume info`
+
+### Set the ping timeout for a failed of shutdown server. 
+`gluster volume set <vol_name> network.ping-timeout <seconds>` # Default 42 Seconds
+
+### Shell script to do a safe shutdown of the server
+https://github.com/gluster/glusterfs/blob/master/extras/stop-all-gluster-processes.sh
