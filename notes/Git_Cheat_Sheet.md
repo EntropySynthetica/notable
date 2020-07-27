@@ -2,12 +2,23 @@
 tags: [Git]
 title: Git_Cheat_Sheet
 created: '2020-01-30T20:16:15.547Z'
-modified: '2020-07-10T17:39:11.510Z'
+modified: '2020-07-27T22:17:11.697Z'
 ---
 
 # Git Cheat Sheet
 Created Friday 17 February 2017
 
+## Install latest version of git on Ubuntu
+
+```
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt install git
+```
+
+Verify with
+
+`git --version`
 
 ## Common Examples
 
