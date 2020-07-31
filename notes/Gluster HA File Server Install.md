@@ -2,7 +2,7 @@
 tags: [Linux]
 title: Gluster HA File Server Install
 created: '2020-07-22T21:31:44.231Z'
-modified: '2020-07-24T17:59:34.617Z'
+modified: '2020-07-30T13:16:49.504Z'
 ---
 
 # Gluster HA File Server Install
@@ -105,6 +105,10 @@ transport.address-family: inet
 ### Mount on Client
 
 `sudo mount -t glusterfs labgluster01.lab:/gv0 /data`
+
+Add the mount to /etc/fstab
+
+`labgluster01.lab:/gv0 /data glusterfs defaults,_netdev 0 0`
 
 ## General commands for troubleshooting
 
