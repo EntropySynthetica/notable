@@ -1,8 +1,8 @@
 ---
 tags: [Linux]
-title: DNS_Cheet_Sheet
+title: DNS Cheet Sheet
 created: '2020-01-30T20:16:15.499Z'
-modified: '2020-02-02T17:51:03.868Z'
+modified: '2020-08-02T01:07:23.037Z'
 ---
 
 # DNS Cheet Sheet

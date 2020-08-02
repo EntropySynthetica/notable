@@ -1,11 +1,11 @@
 ---
 tags: [Linux]
-title: DHCP_Client
+title: DHCP Client Notes
 created: '2020-01-30T20:16:15.491Z'
-modified: '2020-02-02T17:49:39.264Z'
+modified: '2020-08-02T01:07:09.029Z'
 ---
 
-# DHCP Client
+# DHCP Client Notes
 Created Thursday 11 May 2017
 
 

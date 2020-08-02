@@ -1,8 +1,8 @@
 ---
 tags: [Git]
-title: Gitlab_CI_Yaml_examples
+title: Gitlab CI Yaml examples
 created: '2020-01-30T20:16:15.563Z'
-modified: '2020-02-05T16:23:31.206Z'
+modified: '2020-08-02T01:08:27.751Z'
 ---
 
 # Gitlab CI Yaml examples
