@@ -2,18 +2,18 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-07-23T21:05:39.567Z'
+modified: '2020-08-21T20:08:35.272Z'
 ---
 
 # kubectl Notes
 
-Created Monday 27 January 2020
+The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs. For a complete list of kubectl operations, see https://kubernetes.io/docs/reference/kubectl/overview/
 
 ## Install kubectl manually
 Download the latest kubectl
 `curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl`
 
-or grab a specific version
+or grab a specific version. Make sure the version of Kubectl you run is same or newer than your Kubernetes cluster. 
 `curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubectl`
 
 make the kubectl binary executable
@@ -25,7 +25,7 @@ Move it to /usr/local/bin
 Check what version of kubectl you have
 `kubectl version --client`
 
-Check what versionof kubectl and the version of k8s you are managing
+Check what version of kubectl and the version of k8s you are managing
 `kubectl version`
 
 ## Install kubectl via APT
@@ -38,7 +38,10 @@ sudo apt-get install -y kubectl
 ```
 
 ## kubectl config file
-Default kubectl looks for a config in `~/.kube/config`
+
+The Kubectl config file contains the location and credentials to manage your kubernetes cluster.  On install most kubernetes installers will provide you with a kubeconfig file to provide to kubectl. 
+
+By Default kubectl looks for a config in `~/.kube/config`
 
 It will also look for a config file in the enviromental variable $KUBECONFIG
 
@@ -48,11 +51,7 @@ You can set the filename to lookfor in ~/.kube/ with the following command
 Multiple sites can be chained together seperated by a :
 `export KUBECONFIG=$KUBECONFIG:config.site1.yaml:config.site2.yaml`
 
-Bash script to automatically add any .yaml files in the .kube directory into the KUBECONFIG var
-```
-#!/bin/bash
-export KUBECONFIG=$(echo $(find ~/.kube -type f -name config.\*.yaml) | sed 's/:space:/:/g')
-```
+Bash script to automatically add any .yaml files in the .kube directory into the KUBECONFIG enviromental variable.
 
 ```
 for f in `ls ~/.kube/ | grep config.\*.yaml`
@@ -61,8 +60,8 @@ do
 done
 ```
 
-## Install kubectx and kubens
-kubectx is a bash script that gives a quicky way to change context
+## Optional Install kubecontext and kubens
+kubecontext is a bash script that gives a quicky way to change context
 kubens is a bash script that gives a quick way to change namespace
 Repo at: https://github.com/ahmetb/kubectx
 
@@ -72,7 +71,7 @@ sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubecontext
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 ```
 
-Optional Install the package fzf to get the program to be interactive
+Optional Install the package fzf to get kubecontext and kubens to be interactive
 `sudo apt install fzf`
 
 Add Alias for kubectl
@@ -104,10 +103,12 @@ Set Default Namespace
 Show Default Namespace
 `kubectl config view --minify | grep namespace:`
 
-### Create a workload
+### Examples that deploy a workload.
 `kubectl create deployment nginx --image=nginx:1.14`
+
 or
 `kubectl create deployment helloworld --image=rancher/hello-world`
+
 or
 `kubectl create deployment demo --image=monachus/rancher-demo:latest`
 
@@ -118,6 +119,7 @@ the --record in the previous command allows rollback.
 
 Verify with
 `kubectl get pods`
+
 or
 `kubectl get all`
 
@@ -160,6 +162,9 @@ check pod cpu utilization
 ## Install SSL Cert as Secret
 `kubectl create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE}`
 
+Create a manifest file with your ssl cert from pem format
+`kubectl -n ingress-nginx create secret tls ingress-default-cert --cert=cert.pem --key=key.pem -o yaml --dry-run=true > ingress-default-cert.yaml`
+
 The cert can then be referneced by the ingress controller to enable HTTPS. 
 
 ## Cluster Maint
@@ -178,8 +183,9 @@ Drain nodes with daeomon sets
 When maint is complete re-enable the node
 `kubectl uncordon <node name>`
 
+### Show Privilages 
+
 Show my Current Privs in Kubectl
 `kubectl auth can-i --list --namespace=kube-system`
 
-Create a manifest file with your ssl cert from pem format
-`kubectl -n ingress-nginx create secret tls ingress-default-cert --cert=cert.pem --key=key.pem -o yaml --dry-run=true > ingress-default-cert.yaml`
+
