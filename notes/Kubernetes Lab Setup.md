@@ -3,7 +3,7 @@ attachments: [components-of-kubernetes.png]
 tags: [Kubernetes]
 title: Kubernetes Lab Setup
 created: '2020-08-26T16:12:04.379Z'
-modified: '2020-08-26T21:08:31.452Z'
+modified: '2020-08-26T21:42:52.166Z'
 ---
 
 # Kubernetes Lab Setup
@@ -54,8 +54,8 @@ sudo add-apt-repository \
 
 ### Install Docker
 `sudo apt update`
-`sudo apt install docker-ce`
 
+`sudo apt install docker-ce`
 
 ## Verify Docker is running
 
@@ -80,6 +80,7 @@ Show running Containers
 
 ### Install kubectl
 `sudo apt update`
+
 `sudo apt install kubectl`
 
 ### Verify kubectl works
@@ -94,6 +95,7 @@ example:
 
 Move K3S to the proper directory
 `chmod +x k3s `
+
 `sudo mv k3s /usr/local/bin`
 
 Test with 
