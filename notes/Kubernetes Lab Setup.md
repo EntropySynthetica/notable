@@ -1,22 +1,39 @@
 ---
+attachments: [components-of-kubernetes.png]
 tags: [Kubernetes]
 title: Kubernetes Lab Setup
 created: '2020-08-26T16:12:04.379Z'
-modified: '2020-08-26T19:37:12.426Z'
+modified: '2020-08-26T21:08:31.452Z'
 ---
 
 # Kubernetes Lab Setup
 
 The following will detail creating a Kubernetes lab and setting up a test workload
 
-Kubernetes is an open-source container orchestration platform that automates the deployment, management, scaling, and networking of containers. It was developed by Google using the Go Programming Language.
-
-This lab will be setup using K3S.  
+Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available. It was developed by Google using the Go Programming Language.
 
 ## Requirements
 
-* Ubuntu Linux 16.04 or newer.
+* Ubuntu Linux 16.04 or newer with internet access.
 * Firewall open TCP ports 80, 443, 6443, and 30000 to 32600
+
+## What will be installed?
+
+* Kubernetes will be installed via K3S.
+* Docker will be used as a container runtime.
+* kubectl will be used to manage the node.
+
+## Kubernetes Components
+
+* **kube-apiserver**  - The API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane.
+* **etcd**  -  Consistent and highly-available key value store used as Kubernetes' backing store for all cluster data.  In this lab a SQLite Database will take the place of etcd. 
+* **kube-scheduler**  - Control plane component that watches for newly created Pods with no assigned node, and selects a node for them to run on. Factors taken into account for scheduling decisions include: individual and collective resource requirements, hardware/software/policy constraints, affinity and anti-affinity specifications, data locality, inter-workload interference, and deadlines.
+* **kube-controller-manager**  - Control Plane component that runs controller processes. Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process.
+* **kubelet**  - An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. The kubelet takes a set of PodSpecs that are provided through various mechanisms and ensures that the containers described in those PodSpecs are running and healthy. The kubelet doesn’t manage containers which were not created by Kubernetes.
+* **kube-proxy**  - maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
+
+
+![components-of-kubernetes](../attachments/components-of-kubernetes.png)
 
 ## Install Prerequisite packages. 
 
