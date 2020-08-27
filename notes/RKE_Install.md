@@ -2,14 +2,14 @@
 tags: [Kubernetes]
 title: RKE_Install
 created: '2020-01-30T20:16:15.739Z'
-modified: '2020-07-22T13:33:25.540Z'
+modified: '2020-08-27T17:31:07.557Z'
 ---
 
 # RKE Install
-Created Tuesday 07 January 2020
 
-Kubectl install on any host that will manage the cluster
+Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers. It works on bare-metal and virtualized servers. RKE solves the problem of installation complexity, a common issue in the Kubernetes community. With RKE, the installation and operation of Kubernetes is both simplified and easily automated, and it’s entirely independent of the operating system and platform you’re running. As long as you can run a supported version of Docker, you can deploy and run Kubernetes with RKE.
 
+## Kubectl install on any host that will manage the cluster
 ```
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 chmod +x kubectl
@@ -20,14 +20,14 @@ To connect to a cluster get it's kubeconfig file and store it somewhere.  The de
 To use a differnt file run
 set KUBECONFIG ./kube/config.<clustername](./RKE_Install/kube/config.<clustername)>.yml
 
-Install Docker on the nodes
+## Install Docker on the nodes
 ```
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh ./get-docker.sh
 sudo usermod -aG docker your-user
 ```
 
-Install NFS on the nodes for remote persitent storage
+## Install NFS on the nodes for remote persitent storage
 ```
 sudo apt install nfs-common
 ```
@@ -35,7 +35,7 @@ Then check that the rpcbind service is started and enabled on boot.
 
 
 
-Get RKE binary installed on a server that is not one of the nodes. 
+## Get RKE binary installed on a server that is not one of the nodes. 
 ```
 curl -LO https://github.com/rancher/rke/releases/download/v1.1.4/rke_linux-amd64
 chmod +x rke_linux-amd64
@@ -43,7 +43,7 @@ sudo cp rke_linux-amd64 /usr/local/bin/rke
 rke --version
 ```
 
-Make RKE config file.
+## Make RKE config file.
 
 rke config --name cluster.yml
 
@@ -89,10 +89,10 @@ cluster.yml: The RKE cluster configuration file.
 kube_config_cluster.yml: The Kubeconfig file for the cluster, this file contains credentials for full access to the cluster.
 cluster.rkestate: The Kubernetes Cluster State file, this file contains credentials for full access to the cluster.
 
-Start the cluster with
+## Start the cluster with
 `rke up`
 
-Example cluster.yml file
+## Example cluster.yml file
 ```
 # If you intened to deploy Kubernetes in an air-gapped environment,
 # please consult the documentation on how to configure custom RKE images.
@@ -270,7 +270,9 @@ restore:
 dns: null
 ```
 
-Check which versions of kube work with the version of RKE
+## Check which versions of kube work with the version of RKE
 `rke config --list-version --all`
 
-To upgrade the cluster edit cluster.yml and edit the line `kubernetes_version:` then run `rke up`
+## Cluster Upgrades
+
+Open cluster.yml and edit the line `kubernetes_version:` then run `rke up`

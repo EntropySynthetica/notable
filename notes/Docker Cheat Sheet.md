@@ -1,8 +1,8 @@
 ---
-tags: [Docker]
+tags: [Docker, Kubernetes]
 title: Docker Cheat Sheet
 created: '2020-01-30T20:16:15.511Z'
-modified: '2020-08-02T01:07:32.889Z'
+modified: '2020-08-27T17:25:42.297Z'
 ---
 
 # Docker Cheat Sheet

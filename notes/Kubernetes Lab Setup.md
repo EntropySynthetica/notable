@@ -3,7 +3,7 @@ attachments: [components-of-kubernetes.png]
 tags: [Kubernetes]
 title: Kubernetes Lab Setup
 created: '2020-08-26T16:12:04.379Z'
-modified: '2020-08-26T21:42:52.166Z'
+modified: '2020-08-27T17:25:13.318Z'
 ---
 
 # Kubernetes Lab Setup
@@ -70,6 +70,8 @@ Check Docker Version
 Show running Containers
 `docker ps -a`
 
+[Additional Docker Install Notes](Install Docker on Ubuntu.md)
+
 ## Install Kubectl
 
 ### Add Google Kubernetes GPG key
@@ -85,6 +87,8 @@ Show running Containers
 
 ### Verify kubectl works
 `kubectl version --client`
+
+[Additional kubectl Notes](kubectl Notes.md)
 
 
 ## Install K3S
@@ -103,6 +107,8 @@ Test with
 
 Start K3s with 
 `sudo k3s server --docker &`
+
+[Additional k3s Notes](K3S Notes.md)
 
 ## Setup kubectl to talk to the cluster
 

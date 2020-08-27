@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-08-21T20:08:35.272Z'
+modified: '2020-08-27T17:11:08.390Z'
 ---
 
 # kubectl Notes
@@ -11,7 +11,9 @@ The Kubernetes command-line tool, kubectl, allows you to run commands against Ku
 
 ## Install kubectl manually
 Download the latest kubectl
-`curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl`
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+```
 
 or grab a specific version. Make sure the version of Kubectl you run is same or newer than your Kubernetes cluster. 
 `curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubectl`
@@ -28,7 +30,7 @@ Check what version of kubectl you have
 Check what version of kubectl and the version of k8s you are managing
 `kubectl version`
 
-## Install kubectl via APT
+## Install kubectl via APT on Ubuntu
 ```
 sudo apt-get update && sudo apt-get install -y apt-transport-https
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
@@ -123,16 +125,8 @@ Verify with
 or
 `kubectl get all`
 
-### Expose workload via a service
-`kubectl expose deployment nginx --port 80 --target-port=8000 --name=nginx-http`
-or
-`kubectl expose deployment helloworld --type="NodePort"  --port 80  --name=helloworld-http`
-or
-`kubectl create service nodeport helloworld --node-port=31337 --tcp80:80`
-or
-`kubectl expose rc nginx --port=80 --target-port=8000`
-
-`kubectl expose deployment.apps/nginx --type="NodePort" --port 80`
+### Expose workload via a Nodeport service
+`kubectl create service nodeport helloworld --node-port=31337 --tcp=8080:8080`
 
 Verify endpoint
 `k3s kubectl get endpoints mynginx`

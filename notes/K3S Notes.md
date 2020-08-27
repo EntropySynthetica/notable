@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: K3S Notes
 created: '2020-01-30T18:32:37.436Z'
-modified: '2020-08-21T19:56:13.016Z'
+modified: '2020-08-27T17:20:14.072Z'
 ---
 
 # K3S Notes
@@ -14,6 +14,8 @@ By default K3S will use Containerd as a container runtime.  Docker can be used i
 The K3S binary has everything needed to act as the Kubernetes control plane, and it also provides the kubectl command. 
 
 Additional info can be found at: https://k3s.io/
+
+![k3s how it works](../attachments/how-it-works-k3s.svg)
 
 ## Install K3S on a Single Node
 Install via shell script.  
