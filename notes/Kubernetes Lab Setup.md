@@ -3,7 +3,7 @@ attachments: [components-of-kubernetes.png]
 tags: [Kubernetes]
 title: Kubernetes Lab Setup
 created: '2020-08-26T16:12:04.379Z'
-modified: '2020-08-27T18:50:27.918Z'
+modified: '2020-08-27T19:02:55.312Z'
 ---
 
 # Kubernetes Lab Setup
@@ -107,6 +107,7 @@ Test with
 `k3s --version`
 
 Start K3s with 
+
 `sudo k3s server --docker &>/dev/null &`
 
 [Additional k3s Notes](K3S Notes.md)
@@ -117,40 +118,50 @@ Once K3S is up and running it will generate a config file at /etc/rancher/k3s/k3
 To get kubectl to talk to k3s we need to feed this config file to kubectl.  
 
 Switch to your home directory
+
 `cd ~`
 
 Make a directory named .kube
+
 `mkdir .kube`
 
 Copy the kube config file into the .kube folder 
+
 `sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config`
 
 fixup the permissions on the config file
 
+
 `sudo chown sysadmin:sysadmin ~/.kube/config`
 
 Verify kubectl can see the cluster with 
+
 `kubectl get nodes`
 
 ## Add a deployment to the Kubernetes cluster
 
 Create a deployment using a test webserver.
+
 `kubectl create deployment demo --image=monachus/rancher-demo:latest`
 
 Verify the deployment is running
+
 `kubectl get deploy`
 
 ## Expose the deployment using a service. 
 
 Expose the deployment using a nodeport service
+
 `kubectl create service nodeport demo --node-port=31337 --tcp=8080:8080`
 
 Verify the Service exists
+
 `kubectl get service`
 
 Point your web browser to http://<node IP>:31337 to access the workload.
 
 ## Scale up the service. 
+
 `kubectl scale deployments/demo --replicas=4`
 
 
