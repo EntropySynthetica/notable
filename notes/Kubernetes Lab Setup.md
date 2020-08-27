@@ -3,7 +3,7 @@ attachments: [components-of-kubernetes.png]
 tags: [Kubernetes]
 title: Kubernetes Lab Setup
 created: '2020-08-26T16:12:04.379Z'
-modified: '2020-08-27T17:25:13.318Z'
+modified: '2020-08-27T18:50:27.918Z'
 ---
 
 # Kubernetes Lab Setup
@@ -95,6 +95,7 @@ Show running Containers
 
 Download the K3s Binary, the links can be found at https://github.com/rancher/k3s/releases/latest
 example:
+
 `curl -OL https://github.com/rancher/k3s/releases/download/v1.18.8%2Bk3s1/k3s`
 
 Move K3S to the proper directory
@@ -106,7 +107,7 @@ Test with
 `k3s --version`
 
 Start K3s with 
-`sudo k3s server --docker &`
+`sudo k3s server --docker &>/dev/null &`
 
 [Additional k3s Notes](K3S Notes.md)
 
