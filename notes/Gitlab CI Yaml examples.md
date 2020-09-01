@@ -2,7 +2,7 @@
 tags: [Git]
 title: Gitlab CI Yaml examples
 created: '2020-01-30T20:16:15.563Z'
-modified: '2020-08-02T01:08:27.751Z'
+modified: '2020-09-01T18:11:37.252Z'
 ---
 
 # Gitlab CI Yaml examples
@@ -23,28 +23,28 @@ before_script:
 development:
   stage: deploy
   script:
-- docker build -t "$CI_REGISTRY_IMAGE:latest" .
-- docker push "$CI_REGISTRY_IMAGE:latest"
+    - docker build -t "$CI_REGISTRY_IMAGE:latest" .
+    - docker push "$CI_REGISTRY_IMAGE:latest"
   only:
-- master
+    - master
 
 testing:
   stage: deploy
   script:
-- docker build -t "$CI_REGISTRY_IMAGE:${CI_COMMIT_REF_SLUG}" .
-- docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_REF_SLUG}"
+    - docker build -t "$CI_REGISTRY_IMAGE:${CI_COMMIT_REF_SLUG}" .
+    - docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_REF_SLUG}"
   only:
-- branches
+    - branches
   except:
-- master
+    - master
 
 stable:
   stage: deploy
   script:
-- docker build -t "$CI_REGISTRY_IMAGE:${CI_COMMIT_REF_SLUG}" .
-- docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_REF_SLUG}"
+    - docker build -t "$CI_REGISTRY_IMAGE:${CI_COMMIT_REF_SLUG}" .
+    - docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_REF_SLUG}"
   only:
-- tags
+    - tags
 ```
 
 ---
@@ -59,56 +59,56 @@ flake8 linter:
   stage: Test
   image: "python:3.7-alpine3.10"
   script: 
-- python --version
-- python -m pip install -r requirements.txt
-- flake8 --max-line-length=120 app.py
+    - python --version
+    - python -m pip install -r requirements.txt
+    - flake8 --max-line-length=120 app.py
 
 http test:
   stage: Test
   image: "python:3.7-alpine3.10"
   script:
-- python --version
-- python -m pip install -r requirements.txt
-- apk add curl
-- python app.py &
-- sleep 15
-- curl localhost:80
-- echo "content"
-- exit 0 
+    - python --version
+    - python -m pip install -r requirements.txt
+    - apk add curl
+    - python app.py &
+    - sleep 15
+    - curl localhost:80
+    - echo "content"
+    - exit 0 
 
 build app:
   stage: Build
   image: docker:19.03.1
   services:
-  - docker:19.03.1-dind
+    - docker:19.03.1-dind
   variables:
 DOCKER_TLS_CERTDIR: "/certs"
   script:
-- docker info
-- docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-- docker pull $CI_REGISTRY_IMAGE:latest || true
-- docker build . --cache-from $CI_REGISTRY_IMAGE:latest
--t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
--t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
--t $CI_REGISTRY_IMAGE:latest
-- docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-- docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-- docker push $CI_REGISTRY_IMAGE:latest
+    - docker info
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker pull $CI_REGISTRY_IMAGE:latest || true
+    - docker build . --cache-from $CI_REGISTRY_IMAGE:latest
+          -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+          -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+          -t $CI_REGISTRY_IMAGE:latest
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    - docker push $CI_REGISTRY_IMAGE:latest
 
 deploy to k8s:
   image:
-name: gitlab.arvig.com:5050/development-group/arvig-dev-kubectl:latest
+name: gitlab.local:5050/development-group/dev-kubectl:latest
 entrypoint: ["/bin/sh", "-c"]
   only:
-  - master
+    - master
   stage: Deploy
   script:
-- kubectl version
-- cd manifests/
-- kubectl apply -f deployment.yaml
-- kubectl apply -f service.yaml
-- kubectl apply -f ingress.yaml
-- kubectl patch -f deployment.yaml -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"ci-last-updated\":\"$(date +'%s')\"}}}}}"
+    - kubectl version
+    - cd manifests/
+    - kubectl apply -f deployment.yaml
+    - kubectl apply -f service.yaml
+    - kubectl apply -f ingress.yaml
+    - kubectl patch -f deployment.yaml -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"ci-last-updated\":\"$(date +'%s')\"}}}}}"
 
 ```
 
