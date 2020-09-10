@@ -220,7 +220,7 @@ kubectl scale deployments/demo --replicas=4
 
 ## Add a second node to the cluster.  
 
-Repeate the steps to install docker and download K3s on a second node.  
+Repeat the steps to install docker and download K3s on a second node.  
 
 We need to grab the cluster auth token from the first node.  It can be found with the following command
 
