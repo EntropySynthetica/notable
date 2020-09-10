@@ -2,16 +2,16 @@
 tags: [Docker, Kubernetes]
 title: Docker Cheat Sheet
 created: '2020-01-30T20:16:15.511Z'
-modified: '2020-08-27T17:25:42.297Z'
+modified: '2020-09-10T17:13:58.804Z'
 ---
 
 # Docker Cheat Sheet
 Created Thursday 22 June 2017
 
-Nice cheat sheet availble at <http://docker.jens-piegsa.com/>
+Nice cheat sheet availble at http://docker.jens-piegsa.com/
 
 ### Install docker latest version
-`curl -sSL <https://get.docker.com/> | sh`
+`curl -sSL https://get.docker.com/ | sh`
 
 ### Search online repository for docker images,
 `docker search <image name>`

@@ -3,7 +3,7 @@ attachments: [components-of-kubernetes.png]
 tags: [Kubernetes]
 title: Kubernetes Lab Setup
 created: '2020-08-26T16:12:04.379Z'
-modified: '2020-08-27T19:02:55.312Z'
+modified: '2020-09-10T18:51:51.420Z'
 ---
 
 # Kubernetes Lab Setup
@@ -218,10 +218,58 @@ Point your web browser to http://<node IP>:31337 to access the workload.
 kubectl scale deployments/demo --replicas=4
 ```
 
+## Add a second node to the cluster.  
+
+Repeate the steps to install docker and download K3s on a second node.  
+
+We need to grab the cluster auth token from the first node.  It can be found with the following command
+
+```
+sudo cat /var/lib/rancher/k3s/server/node-token
+```
+
+On the new node we will start K3S with this command
+
+```
+sudo k3s agent --docker --server ${K3S_URL} --token ${K3S_TOKEN} &>/dev/null &
+```
+
+To verify things are running correctly run `kubectl get nodes`.  You should now see 2 nodes in the cluster.
+
+```
+sysadmin@kubelab01:~$ kubectl get nodes
+NAME        STATUS   ROLES    AGE   VERSION
+kubelab01   Ready    master   36m   v1.18.8+k3s1
+kubelab02   Ready    <none>   23s   v1.18.8+k3s1
+
+```
+
+## Managing the cluster with Rancher
+
+Create a server to act as the rancher server. Install Docker on it using the steps outlined above.  
+
+Verify docker is running with the following command
+
+```
+docker ps
+```
+
+Start rancher with the following command 
+
+```
+sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 -v /opt/rancher:/var/lib/rancher rancher/rancher:v2.4.7
+```
+
+Rancher should start within a few minutes and can be accessed at https://<ip of rancher server>
 
 
+When logging in for the first time Rancher will ask you to set the password for the admin account, and to enter the URL the server can be reached out by outside services.  
 
 
+Once in the main rancher UI click the "Add Cluster" button
 
+Select "Import an Existing Cluster"
 
+Give your cluster a name and click create. 
 
+Rancher will provide us with a kubectl command we need to run.  The command will create pods that allow the cluster to be managed by rancher.  
