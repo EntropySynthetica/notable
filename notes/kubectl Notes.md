@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-08-27T17:11:08.390Z'
+modified: '2020-09-14T01:41:40.646Z'
 ---
 
 # kubectl Notes
@@ -182,4 +182,34 @@ When maint is complete re-enable the node
 Show my Current Privs in Kubectl
 `kubectl auth can-i --list --namespace=kube-system`
 
+## Useful Commands
+Commands from this site: https://medium.com/flant-com/kubectl-commands-and-tips-7b33de0c5476
 
+Get the list of nodes and their memory size
+```
+kubectl get no -o json | \
+  jq -r '.items | sort_by(.status.capacity.memory)[]|[.metadata.name,.status.capacity.memory]| @tsv'
+```
+
+Get a list of nodes and the number of pods running on them
+```
+kubectl get po -o json --all-namespaces | \
+  jq '.items | group_by(.spec.nodeName) | map({"nodeName": .[0].spec.nodeName, "count": length}) | sort_by(.count)'
+```
+
+Get a list of all pods in a cluster
+```
+kubectl get pods --all-namespaces
+```
+
+Get a list of non running pods
+```
+kubectl get pods -A --field-selector=status.phase!=Running | grep -v Complete
+```
+
+Copy secrets from one namespace to another
+```
+kubectl get secrets -o json --namespace namespace-old | \
+  jq '.items[].metadata.namespace = "namespace-new"' | \
+  kubectl create-f  -
+```
