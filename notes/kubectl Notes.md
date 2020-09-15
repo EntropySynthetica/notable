@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-09-14T01:41:40.646Z'
+modified: '2020-09-15T02:11:11.623Z'
 ---
 
 # kubectl Notes
@@ -212,4 +212,29 @@ Copy secrets from one namespace to another
 kubectl get secrets -o json --namespace namespace-old | \
   jq '.items[].metadata.namespace = "namespace-new"' | \
   kubectl create-f  -
+```
+or
+```
+kubectl get secret my-secret --namespace namespace1 -o yaml | sed "/namespace:/d" | kubectl apply --namespace=namespace2 -f -
+```
+
+
+Start a shell in a temporary Pod
+```
+# Ubuntu
+kubectl run my-ubuntu --rm -i -t --restart=Never --image ubuntu -- bash
+
+# CentOS
+kubectl run my-centos --rm -i -t --restart=Never --image centos:8 -- bash
+
+# Alpine
+kubectl run my-alpine --rm -i -t --restart=Never --image alpine:3.10 -- sh
+
+# Busybox
+kubectl run my-busybox --rm -i -t --restart=Never --image busybox -- sh
+```
+
+Extract and Decode a Secret
+```
+kubectl get secret -n namespace1 my-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode
 ```
