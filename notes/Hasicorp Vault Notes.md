@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: Hasicorp Vault Notes
 created: '2020-08-31T01:45:19.253Z'
-modified: '2020-10-01T13:04:04.752Z'
+modified: '2020-10-01T13:34:28.841Z'
 ---
 
 # Hasicorp Vault Notes
@@ -75,7 +75,7 @@ EOH
 On your client ask vault to generate and save a signed key you can use to log into the host. 
 
 ```
-vault write -field=signed_key ssh-client-signer/sign/my-role public_key=~/.ssh/id_rsa.pub > ~/.ssh/id_rsa-cert.pub
+vault write -field=signed_key ssh-client-signer/sign/my-role public_key=@$HOME/.ssh/id_rsa.pub > ~/.ssh/id_rsa-cert.pub
 ```
 
 You can now SSH into the host until the TTL expires. 
