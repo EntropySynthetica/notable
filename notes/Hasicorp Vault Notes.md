@@ -2,11 +2,28 @@
 tags: [Kubernetes]
 title: Hasicorp Vault Notes
 created: '2020-08-31T01:45:19.253Z'
-modified: '2020-08-31T18:49:58.948Z'
+modified: '2020-10-01T13:04:04.752Z'
 ---
 
 # Hasicorp Vault Notes
 
+After starting the vault server check the startup logs,  the root token will be in there. 
+
+## Connecting the Vault Binary
+
+Setup your exports,
+```
+export VAULT_ADDR='http://127.0.0.1:8200'
+```
+
+```
+export VAULT_TOKEN="s.XmpNPoi9sRhYtdKHaQhkHP6x"
+```
+
+Verify it is connecting
+```
+vault status
+```
 
 ## Setup SSH Signed Certificates
 
