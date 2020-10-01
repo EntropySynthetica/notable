@@ -2,10 +2,35 @@
 tags: [Kubernetes]
 title: Hasicorp Vault Notes
 created: '2020-08-31T01:45:19.253Z'
-modified: '2020-10-01T13:34:28.841Z'
+modified: '2020-10-01T13:49:37.573Z'
 ---
 
 # Hasicorp Vault Notes
+
+## Install the Vault Binary to manage a vault server.  
+
+
+Add the Hashicorp GPG key
+```
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+```
+
+Add the offical Hashicorp Linux Repo
+```
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+```
+
+Update and Install Vault
+```
+sudo apt-get update && sudo apt-get install vault
+```
+
+Verify it is installed 
+```
+vault
+```
+
+---
 
 After starting the vault server check the startup logs,  the root token will be in there. 
 
@@ -25,6 +50,8 @@ Verify it is connecting
 vault status
 ```
 
+
+---
 ## Setup SSH Signed Certificates
 
 Mount the secrets engine.
