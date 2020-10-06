@@ -2,7 +2,7 @@
 tags: [Git]
 title: Git_Cheat_Sheet
 created: '2020-01-30T20:16:15.547Z'
-modified: '2020-07-27T22:17:11.697Z'
+modified: '2020-10-06T20:35:22.678Z'
 ---
 
 # Git Cheat Sheet
@@ -86,6 +86,9 @@ See the differences in your staged (or unstaged) changes
 
 Check that you can connect via SSH to git repo
 `ssh -vT git@github.com`
+
+Change the git remote location
+`git remote set-url origin https://github.com/USERNAME/REPOSITORY.git`
 
 Advanced Git Reference
 https://dev.to/g_abud/advanced-git-reference-1o9j
