@@ -2,7 +2,7 @@
 tags: [Crypto, Linux]
 title: Setup_Apache2_with_GoDaddy_Cert
 created: '2020-01-30T20:16:15.911Z'
-modified: '2020-02-12T21:40:35.031Z'
+modified: '2020-11-10T21:50:14.282Z'
 ---
 
 # Setup Apache2 with GoDaddy Cert
@@ -43,3 +43,15 @@ Site can be verified with
 
 `openssl verify -CAfile chain.pem mycert.pem`
 
+
+## Verify Cert from CLI
+openssl x509 -text -noout -in certificate.crt 
+
+## Verify Priv key matches cert
+For your SSL certificate: `openssl x509 –noout –modulus –in <file>.crt | openssl md5`
+
+For your RSA private key: `openssl rsa –noout –modulus –in <file>.key | openssl md5`
+
+For your CSR: `openssl req -noout -modulus -in <file>.csr | openssl md5`
+
+You just need to replace <file> with your file’s name. If all the three match, the SSL certificate matches the Private Key.
