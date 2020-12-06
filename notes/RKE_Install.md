@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: RKE_Install
 created: '2020-01-30T20:16:15.739Z'
-modified: '2020-11-05T17:32:07.211Z'
+modified: '2020-12-01T15:41:10.604Z'
 ---
 
 # RKE Install
@@ -37,7 +37,7 @@ Then check that the rpcbind service is started and enabled on boot.
 
 ## Get RKE binary installed on a server that is not one of the nodes. 
 ```
-curl -LO https://github.com/rancher/rke/releases/download/v1.2.1/rke_linux-amd64
+curl -LO https://github.com/rancher/rke/releases/download/v1.2.3/rke_linux-amd64
 chmod +x rke_linux-amd64
 sudo cp rke_linux-amd64 /usr/local/bin/rke
 rke --version
