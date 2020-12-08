@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-12-08T20:21:42.680Z'
+modified: '2020-12-08T20:29:02.783Z'
 ---
 
 # kubectl Notes
@@ -178,6 +178,18 @@ check pod cpu utilization
 
 ### Get events for a pod (useful for troubleshooting)
 `kubectl describe pod <pod name>`
+
+## Getting logs
+
+`kubectl logs -f` # stream logs
+`kubectl logs --since=1h` # return logs newer than a relative duration
+`kubectl logs --since-time=2020-08-13T10:46:00.000000000Z` # return logs after a specific date (RFC3339)
+`kubectl logs --previous` # print the logs for the previous instance of the container
+`kubectl logs -c` # print the logs of this container
+`kubectl logs -l` #  print logs from all containers in pods defined by label
+`kubectl get events --sort-by=’.metadata.creationTimestamp’` # print all events in chronological order
+`kubectl describe pod`  # print pod details like status or recent events
+
 
 ## Install SSL Cert as Secret
 `kubectl create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE}`
