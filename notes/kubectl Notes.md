@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-09-15T02:11:11.623Z'
+modified: '2020-12-08T20:21:42.680Z'
 ---
 
 # kubectl Notes
@@ -78,6 +78,32 @@ Optional Install the package fzf to get kubecontext and kubens to be interactive
 
 Add Alias for kubectl
 `alias kc=kubectl`
+
+## Install KubeCTL krew
+Krew itself is a kubectl plugin that is installed and updated via Krew (yes, Krew self-hosts).
+
+Run this command in your terminal to download and install krew:
+```
+(
+  set -x; cd "$(mktemp -d)" &&
+  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.tar.gz" &&
+  tar zxvf krew.tar.gz &&
+  KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_$(uname -m | sed -e 's/x86_64/amd64/' -e 's/arm.*$/arm/')" &&
+  "$KREW" install krew
+)
+```
+
+Add $HOME/.krew/bin directory to your PATH environment variable. To do this, update your .bashrc or .zshrc file and append the following line:
+`export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"`
+
+## Install KubeCTL Neat
+Remove clutter from Kubernetes manifests to make them more readable.
+
+Install with:
+`kubectl krew install neat`
+
+Use: 
+`kubectl get pod mypod -o yaml | kubectl neat`
 
 ## kubectl command examples
 
