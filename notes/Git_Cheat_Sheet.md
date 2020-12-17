@@ -2,7 +2,7 @@
 tags: [Git]
 title: Git_Cheat_Sheet
 created: '2020-01-30T20:16:15.547Z'
-modified: '2020-10-06T20:35:22.678Z'
+modified: '2020-12-14T22:27:22.234Z'
 ---
 
 # Git Cheat Sheet
@@ -364,4 +364,16 @@ git filter-branch --env-filter \
 
 ### list files changed in ${commit_id}, porcelain way, meant to be user facing
 `git show --pretty="" --name-only bd61ad98`
+
+## Keep all files as is and start git over fresh 
+This is useful if secrets have been commited and the history needs to be wiped out to protect them. 
+
+`git checkout --orphan newBranch`
+`git add -A`  # Add all files and commit them
+`git commit`
+`git branch -D master`  # Deletes the master branch
+`git branch -m master`  # Rename the current branch to master
+`git push -f origin master`  # Force push master branch to github
+`git gc --aggressive --prune=all`     # remove the old files
+
 
