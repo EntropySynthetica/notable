@@ -2,7 +2,7 @@
 tags: [Database, Linux, MySQL]
 title: MySQL Notes
 created: '2020-02-27T20:05:41.420Z'
-modified: '2020-07-10T15:22:21.807Z'
+modified: '2021-01-25T23:17:04.733Z'
 ---
 
 # MySQL Notes
@@ -177,3 +177,22 @@ Grant `ALL` access to user for `*` tables: `GRANT ALL ON database.* TO 'user'@'l
 
 ## Find out the IP Address of the Mysql Host
 `SHOW VARIABLES WHERE Variable_name = 'hostname';` ([source](http://serverfault.com/a/129646))
+
+## Backup and Restore Mysql DB
+
+### Backup
+Backup Single DB
+`sudo mysqldump -u [user] -p [database_name] > [filename].sql`
+
+Backup Multiple DBs
+`sudo mysqldump -u [user] -p [database_1] [database_2] [database_etc] > [filename].sql`
+
+Backup Entire Server
+`mysqldump --all-databases --single-transaction --quick --lock-tables=false > full-backup-$(date +%F).sql -u root -p`
+
+### Restore
+
+Create New DB on restore server named same as one from backup. 
+`mysql -u [user] -p [database_name] < [filename].sql`
+
+
