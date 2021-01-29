@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: kubectl Notes
 created: '2020-01-30T19:12:41.603Z'
-modified: '2020-12-08T20:29:02.783Z'
+modified: '2021-01-29T18:04:01.267Z'
 ---
 
 # kubectl Notes
@@ -196,6 +196,12 @@ check pod cpu utilization
 
 Create a manifest file with your ssl cert from pem format
 `kubectl -n ingress-nginx create secret tls ingress-default-cert --cert=cert.pem --key=key.pem -o yaml --dry-run=true > ingress-default-cert.yaml`
+
+Verify the expiration date of a secret in K8S
+`kubectl get secret secretname -o "jsonpath={.data['tls\.crt']}" | base64 -d | openssl x509 -enddate -noout`
+
+Verify the Cert details
+`kubectl get secret ecwildcardcert -o "jsonpath={.data['tls\.crt']}" | base64 -d | openssl x509 -text -noout`
 
 The cert can then be referneced by the ingress controller to enable HTTPS. 
 
