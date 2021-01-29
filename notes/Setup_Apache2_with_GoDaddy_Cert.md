@@ -2,7 +2,7 @@
 tags: [Crypto, Linux]
 title: Setup_Apache2_with_GoDaddy_Cert
 created: '2020-01-30T20:16:15.911Z'
-modified: '2020-11-10T21:50:14.282Z'
+modified: '2021-01-29T18:01:14.568Z'
 ---
 
 # Setup Apache2 with GoDaddy Cert
@@ -45,7 +45,7 @@ Site can be verified with
 
 
 ## Verify Cert from CLI
-openssl x509 -text -noout -in certificate.crt 
+`openssl x509 -text -noout -in certificate.crt `
 
 ## Verify Priv key matches cert
 For your SSL certificate: `openssl x509 –noout –modulus –in <file>.crt | openssl md5`
