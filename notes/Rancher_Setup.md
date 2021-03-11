@@ -2,7 +2,7 @@
 tags: [Kubernetes]
 title: Rancher_Setup
 created: '2020-01-30T20:16:15.731Z'
-modified: '2020-10-16T13:45:01.667Z'
+modified: '2021-03-11T14:44:35.157Z'
 ---
 
 # Rancher Setup
@@ -27,7 +27,7 @@ sudo service systemd-resolved stop
 rancher/hello-world
 
 ## Startup rancher with self signed certs
-`sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 -v /opt/rancher:/var/lib/rancher --privileged rancher/rancher:v2.5.1`
+`sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 -v /opt/rancher:/var/lib/rancher --privileged rancher/rancher:v2.5.6`
 
 ## Startup Rancher with proper certs
 ```
@@ -37,7 +37,7 @@ docker run -d --restart=unless-stopped \
   -v /opt/certs/cert.pem:/etc/rancher/ssl/cert.pem \
   -v /opt/certs/key.pem:/etc/rancher/ssl/key.pem \
   -v /opt/certs/cacert.pem:/etc/rancher/ssl/cacerts.pem --privileged \
-  rancher/rancher:v2.5.1
+  rancher/rancher:v2.5.6
 ```
 
 ## Get the go daddy intermediate cert
