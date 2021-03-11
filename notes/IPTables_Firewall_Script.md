@@ -2,7 +2,7 @@
 tags: [Linux]
 title: IPTables_Firewall_Script
 created: '2020-01-30T20:16:15.639Z'
-modified: '2020-04-20T21:34:00.817Z'
+modified: '2021-02-04T19:38:01.770Z'
 ---
 
 # IPTables Firewall Script
@@ -70,79 +70,55 @@ iptables-save > /root/firewall.rules
 
 
 
-#Notes
+## Notes
 
- Unblock an Interface
- iptables -A INPUT -i eth0 -j ACCEPT
+Unblock an Interface
+`iptables -A INPUT -i eth0 -j ACCEPT`
 
- Accept packets from trusted IP addresses
- iptables -A INPUT -s 192.168.0.4 -j ACCEPT # change the IP address as appropriate
+Accept packets from trusted IP addresses
+`iptables -A INPUT -s 192.168.0.4 -j ACCEPT` # change the IP address as appropriate
 
- Accept packets from trusted IP addresses
- iptables -A INPUT -s 192.168.0.0/24 -j ACCEPT  # using standard slash notation
- iptables -A INPUT -s 192.168.0.0/255.255.255.0 -j ACCEPT # using a subnet mask
+Accept packets from trusted IP addresses
+`iptables -A INPUT -s 192.168.0.0/24 -j ACCEPT`  # using standard slash notation
+`iptables -A INPUT -s 192.168.0.0/255.255.255.0 -j ACCEPT` # using a subnet mask
 
- Accept tcp packets on destination port 6881 (bittorrent)
- iptables -A INPUT -p tcp --dport 6881 -j ACCEPT
- Note: In order to use matches such as destination or source ports (--dport or --sport), you must first specify the protocol 
- (tcp, udp, icmp, all). 
+Accept tcp packets on destination port 6881 (bittorrent)
+`iptables -A INPUT -p tcp --dport 6881 -j ACCEPT`
+Note: In order to use matches such as destination or source ports (--dport or --sport), you must first specify the protocol 
+(tcp, udp, icmp, all). 
 
- Accept tcp packets on destination port 6881 (bittorrent)
- iptables -A INPUT -p tcp --dport 6881 -j ACCEPT
+Accept tcp packets on destination port 6881 (bittorrent)
+`iptables -A INPUT -p tcp --dport 6881 -j ACCEPT`
 
- Accept tcp packets on destination ports 6881-6890
- iptables -A INPUT -p tcp --dport 6881:6890 -j ACCEPT
+Accept tcp packets on destination ports 6881-6890
+`iptables -A INPUT -p tcp --dport 6881:6890 -j ACCEPT`
 
- Accept tcp packets on destination port 22 (SSH) from private LAN
- iptables -A INPUT -p tcp -s 192.168.0.0/24 --dport 22 -j ACCEPT
+Accept tcp packets on destination port 22 (SSH) from private LAN
+`iptables -A INPUT -p tcp -s 192.168.0.0/24 --dport 22 -j ACCEPT`
 
+Show hit for rules with auto refresh
+`watch --interval 0 'iptables -nvL | grep -v "0     0"'`
 
-#Iptables Persistant in Debian
-##install the following
+Show hit for rule with auto refresh and highlight any changes since the last refresh
+`watch -d -n 2 iptables -nvL`
+
+Block the port 902 and we hide this port from nmap.
+`iptables -A INPUT -i eth0 -p tcp --dport 902 -j REJECT --reject-with icmp-port-unreachable`
+
+Add a comment to a rule:
+`iptables ... -m comment --comment "This rule is here for this reason"`
+
+## Iptables Persistant in Debian
+install the following
 `apt-get install iptables-persistent`
 
 To Save
 `sudo dpkg-reconfigure iptables-persistent`
 
-
-# Show hit for rules with auto refresh
-watch --interval 0 'iptables -nvL | grep -v "0     0"'
-
-# Show hit for rule with auto refresh and highlight any changes since the last refresh
-watch -d -n 2 iptables -nvL
-
-# Block the port 902 and we hide this port from nmap.
-iptables -A INPUT -i eth0 -p tcp --dport 902 -j REJECT --reject-with icmp-port-unreachable
-
-# Note, --reject-with accept:
-#	icmp-net-unreachable
-#	icmp-host-unreachable
-#	icmp-port-unreachable <- Hide a port to nmap
-#	icmp-proto-unreachable
-#	icmp-net-prohibited
-#	icmp-host-prohibited or
-#	icmp-admin-prohibited
-#	tcp-reset
-
-# Add a comment to a rule:
-iptables ... -m comment --comment "This rule is here for this reason"
+or on Ubuntu 20 
+`sudo iptables-save > /etc/iptables/rules.v4`
 
 
-# To remove or insert a rule:
-# 1) Show all rules
-iptables -L INPUT --line-numbers
-# OR iptables -nL --line-numbers
 
-# Chain INPUT (policy ACCEPT)
-#     num  target prot opt source destination
-#     1    ACCEPT     udp  --  anywhere  anywhere             udp dpt:domain
-#     2    ACCEPT     tcp  --  anywhere  anywhere             tcp dpt:domain
-#     3    ACCEPT     udp  --  anywhere  anywhere             udp dpt:bootps
-#     4    ACCEPT     tcp  --  anywhere  anywhere             tcp dpt:bootps
 
-# 2.a) REMOVE (-D) a rule. (here an INPUT rule)
-iptables -D INPUT 2
-
-# 2.b) OR INSERT a rule.
-iptables -I INPUT {LINE_NUMBER} -i eth1 -p tcp --dport 21 -s 123.123.123.123 -j ACCEPT -m comment --comment "This rule is here for this reason"
 
